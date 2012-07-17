@@ -1,0 +1,53 @@
+LOCAL_PATH := $(call my-dir)
+MY_PATH := $(LOCAL_PATH)
+include $(CLEAR_VARS)
+
+include $(LOCAL_PATH)/lib/Android.mk
+
+include $(CLEAR_VARS)
+
+LOCAL_PATH := $(MY_PATH)
+
+LOCAL_PRELINK_MODULE := false
+
+
+LOCAL_SRC_FILES := \
+	src/omx_tp_audiodec_component.c
+
+LOCAL_C_INCLUDES := \
+	$(LOCAL_PATH)/include \
+	$(OMX_TOP)/omx_audio_interface/include \
+	$(CDK_DIR)/cdk \
+	$(CDK_DIR)/audio_codec \
+	$(CDK_DIR)/container \
+	$(OMX_TOP)/omx_include \
+	$(OMX_TOP)/omx_base/include \
+
+LOCAL_SHARED_LIBRARIES := \
+	libc \
+	libutils \
+	libcutils \
+	liblog \
+	libOMX.TCC.base \
+	libOMX.TCC.audio
+
+# TODO: write your decoder module name
+LOCAL_WHOLE_STATIC_LIBRARIES := \
+	lib???
+	
+LOCAL_LDLIBS += \
+	-lpthread \
+	-ldl
+
+LOCAL_ARM_MODE := arm
+
+LOCAL_CFLAGS := \
+	$(TCC_OMX_FLAGS) \
+	-DSYS_LINUX
+	
+# TODO: modify component name	
+LOCAL_MODULE := libOMX.TCC.???
+LOCAL_MODULE_TAGS := optional
+
+include $(BUILD_SHARED_LIBRARY)
+

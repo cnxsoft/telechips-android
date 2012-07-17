@@ -1,0 +1,51 @@
+LOCAL_PATH := $(call my-dir)
+include $(CLEAR_VARS)
+
+LOCAL_PRELINK_MODULE := false
+
+# TODO: add your source code files
+LOCAL_SRC_FILES := \
+	third_party_audio_dec_api.c \
+	src/xxx.c
+
+# TODO: specify the library name 
+LOCAL_MODULE := lib3rd_Party_DEC
+LOCAL_MODULE_TAGS := optional
+
+LOCAL_C_INCLUDES := \
+    $(LOCAL_PATH) \
+	$(LOCAL_PATH)/../include \
+	$(LOCAL_PATH)/src \
+	$(OMX_TOP)/omx_audio_interface/include \
+	$(CDK_DIR)/cdk \
+	$(CDK_DIR)/audio_codec \
+	$(CDK_DIR)/container \
+	$(OMX_TOP)/omx_include \
+	$(OMX_TOP)/omx_base/include \
+	
+LOCAL_STATIC_LIBRARIES := \
+					   
+LOCAL_SHARED_LIBRARIES := \
+	libc \
+	libutils \
+	libcutils \
+	liblog \
+
+LOCAL_LDLIBS += \
+	-lpthread \
+	-ldl
+
+LOCAL_ARM_MODE := arm
+
+# TODO: specify the compile options
+LOCAL_CFLAGS := \
+	
+	
+
+#$(TCC_OMX_FLAGS) \
+#				-fstrict-aliasing \
+
+LOCAL_LDFLAGS := \
+
+include $(BUILD_STATIC_LIBRARY)
+
